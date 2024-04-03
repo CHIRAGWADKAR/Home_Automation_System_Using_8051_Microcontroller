@@ -20,42 +20,42 @@ while (1) {
 	RI=0;
 	if(x=='1')
 	{
-	load1=1; // load on
+	load1=1; // load off
 	}
 	if(x=='2')
 	{
-	load1=0; // load off
+	load1=0; // load on
 	}
 	if(x=='3')
 	{
-	load2=1; // load2 on
+	load2=1; // load2 off
 	}
 	if(x=='4')
 	{
-	load2=0; // load2 off
+	load2=0; // load2 on
 	}
 	if(x=='5') 
 	{
-	load3=1; // load3 on
+	load3=1; // load3 off
 	}
 	if(x=='6')
 	{
-	load3=0; // load3 off
+	load3=0; // load3 on
 	}
 	if(x=='7')
 	{
-	load4=1; // load4 on
+	load4=1; // load4 off
 	}
 	if(x=='8'){
-	load4=0; // load4 off
+	load4=0; // load4 on
 	}
 	if(x=='9')
 	{
-	load1=load2=load3=load4=0; // all loads off
+	load1=load2=load3=load4=1; // all loads off
 	}
 	if(x=='0')
 	{
-	load1=load2=load3=load4=1; // all loads on
+	load1=load2=load3=load4=0; // all loads on
 	}
 }
 }
