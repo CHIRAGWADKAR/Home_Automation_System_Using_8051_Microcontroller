@@ -7,24 +7,24 @@ sbit load4=P1^3;
 void main() {
 unsigned char x;
 SCON=0X50;
-TMOD=0X20;
-TH1=-3;
-TR1=1;
+TMOD=0X20; // Timer 1 Mode 2
+TH1=-3; // baud rate 9600
+TR1=1; // Timer 1
 	
 while (1) {
 	while(RI==0);
 	x=SBUF;
 	SBUF=x;
 	while(TI==0);
-	TI=0;
-	RI=0;
+	// TI=0;
+	// RI=0;
 	if(x=='1')
 	{
-	load1=1; // load off
+	load1=1; // load1 off
 	}
 	if(x=='2')
 	{
-	load1=0; // load on
+	load1=0; // load1 on
 	}
 	if(x=='3')
 	{
