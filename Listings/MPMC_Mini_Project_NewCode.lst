@@ -1,0 +1,101 @@
+C51 COMPILER V9.60.7.0   MPMC_MINI_PROJECT_NEWCODE                                         07/21/2025 20:40:59 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MPMC_MINI_PROJECT_NEWCODE
+OBJECT MODULE PLACED IN .\Objects\MPMC_Mini_Project_NewCode.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE MPMC_Mini_Project_NewCode.C OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\MPMC_Mini_Project_NewCode.lst) TABS(2) OBJECT(.\Objects\MPMC_Mini_Project_NewCode.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          // Lamp Relays
+   4          sbit lamp1 = P1^0;
+   5          sbit lamp2 = P1^1;
+   6          sbit lamp3 = P1^2;
+   7          sbit lamp4 = P1^3;
+   8          
+   9          // Stepper Motor
+  10          sbit coil1 = P2^1;
+  11          sbit coil2 = P2^2;
+  12          sbit coil3 = P2^3;
+  13          sbit coil4 = P2^4;
+  14          
+  15          void delay(unsigned int time){
+  16   1          unsigned int i,j;
+  17   1          for(i=0;i<time;i++)
+  18   1              for(j=0;j<1275;j++);
+  19   1      }
+  20          
+  21          void stepper_cw(){
+  22   1          unsigned int i;
+  23   1          for(i=0; i<100; i++){
+  24   2              coil1=1; coil2=0; coil3=0; coil4=0; delay(10);
+  25   2              coil1=0; coil2=1; coil3=0; coil4=0; delay(10);
+  26   2              coil1=0; coil2=0; coil3=1; coil4=0; delay(10);
+  27   2              coil1=0; coil2=0; coil3=0; coil4=1; delay(10);
+  28   2          }
+  29   1      }
+  30          
+  31          void stepper_acw(){
+  32   1          unsigned int i;
+  33   1          for(i=0; i<100; i++){
+  34   2              coil1=0; coil2=0; coil3=0; coil4=1; delay(10);
+  35   2              coil1=0; coil2=0; coil3=1; coil4=0; delay(10);
+  36   2              coil1=0; coil2=1; coil3=0; coil4=0; delay(10);
+  37   2              coil1=1; coil2=0; coil3=0; coil4=0; delay(10);
+  38   2          }
+  39   1      }
+  40          
+  41          void main(){
+  42   1          unsigned char x;
+  43   1          SCON = 0x50; // UART Mode 1
+  44   1          TMOD = 0x20;
+  45   1          TH1 = -3;
+  46   1          TR1 = 1;
+  47   1      
+  48   1          lamp1=lamp2=lamp3=lamp4=1;
+  49   1          coil1=coil2=coil3=coil4=0;
+  50   1      
+  51   1          while(1){
+  52   2              while(RI==0);
+  53   2              x=SBUF;
+  54   2              RI=0;
+C51 COMPILER V9.60.7.0   MPMC_MINI_PROJECT_NEWCODE                                         07/21/2025 20:40:59 PAGE 2   
+
+  55   2              SBUF=x;
+  56   2              while(TI==0);
+  57   2              TI=0;
+  58   2      
+  59   2              // Lamp control
+  60   2              if(x=='1') lamp1=0;
+  61   2              if(x=='2') lamp1=1;
+  62   2              if(x=='3') lamp2=0;
+  63   2              if(x=='4') lamp2=1;
+  64   2              if(x=='5') lamp3=0;
+  65   2              if(x=='6') lamp3=1;
+  66   2              if(x=='7') lamp4=0;
+  67   2              if(x=='8') lamp4=1;
+  68   2              if(x=='9') {lamp1=lamp2=lamp3=lamp4=0;} // All ON
+  69   2              if(x=='0') {lamp1=lamp2=lamp3=lamp4=1;} // All OFF
+  70   2      
+  71   2              // Stepper control
+  72   2              if(x=='s' || x=='S') stepper_cw();
+  73   2              if(x=='a' || x=='A') stepper_acw();
+  74   2          }
+  75   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    268    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

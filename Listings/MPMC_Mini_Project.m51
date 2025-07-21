@@ -1,20 +1,20 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    04/03/2024  20:18:17  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/21/2025  20:40:59  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\MPMC_Mini_Project.obj TO .\Objects\MPMC_Mini_Project PRINT 
->> (.\Listings\MPMC_Mini_Project.m51) CODE (0X0000-0X0FFF)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\MPMC_Mini_Project_NewCode.obj TO .\Objects\MPMC_Mini_Project PRINT (.\Listings\MPM
+>> C_Mini_Project.m51) CODE (0X0000-0X0FFF)
 
 
 MEMORY MODEL: SMALL
 
 
 INPUT MODULES INCLUDED:
-  .\Objects\STARTUP.obj (?C_STARTUP)
-  .\Objects\MPMC_Mini_Project.obj (MPMC_MINI_PROJECT)
+  .\Objects\MPMC_Mini_Project_NewCode.obj (MPMC_MINI_PROJECT_NEWCODE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
 
 
-LINK MAP OF MODULE:  .\Objects\MPMC_Mini_Project (?C_STARTUP)
+LINK MAP OF MODULE:  .\Objects\MPMC_Mini_Project (MPMC_MINI_PROJECT_NEWCODE)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -27,142 +27,147 @@ LINK MAP OF MODULE:  .\Objects\MPMC_Mini_Project (?C_STARTUP)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
-            CODE    0800H     0055H     UNIT         ?PR?MAIN?MPMC_MINI_PROJECT
-            CODE    0855H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0800H     0081H     UNIT         ?PR?MAIN?MPMC_MINI_PROJECT_NEWCODE
+            CODE    0881H     0032H     UNIT         ?PR?STEPPER_CW?MPMC_MINI_PROJECT_NEWCODE
+            CODE    08B3H     002EH     UNIT         ?PR?STEPPER_ACW?MPMC_MINI_PROJECT_NEWCODE
+            CODE    08E1H     002BH     UNIT         ?PR?_DELAY?MPMC_MINI_PROJECT_NEWCODE
+            CODE    090CH     000CH     UNIT         ?C_C51STARTUP
 
 
 
-OVERLAY MAP OF MODULE:   .\Objects\MPMC_Mini_Project (?C_STARTUP)
+OVERLAY MAP OF MODULE:   .\Objects\MPMC_Mini_Project (MPMC_MINI_PROJECT_NEWCODE)
 
 
 SEGMENT
   +--> CALLED SEGMENT
 ---------------------
 ?C_C51STARTUP
-  +--> ?PR?MAIN?MPMC_MINI_PROJECT
+  +--> ?PR?MAIN?MPMC_MINI_PROJECT_NEWCODE
+
+?PR?MAIN?MPMC_MINI_PROJECT_NEWCODE
+  +--> ?PR?STEPPER_CW?MPMC_MINI_PROJECT_NEWCODE
+  +--> ?PR?STEPPER_ACW?MPMC_MINI_PROJECT_NEW...
+
+?PR?STEPPER_CW?MPMC_MINI_PROJECT_NEWCODE
+  +--> ?PR?_DELAY?MPMC_MINI_PROJECT_NEWCODE
+
+?PR?STEPPER_ACW?MPMC_MINI_PROJECT_NEW...
+  +--> ?PR?_DELAY?MPMC_MINI_PROJECT_NEWCODE
 
 
 
-SYMBOL TABLE OF MODULE:  .\Objects\MPMC_Mini_Project (?C_STARTUP)
+SYMBOL TABLE OF MODULE:  .\Objects\MPMC_Mini_Project (MPMC_MINI_PROJECT_NEWCODE)
 
   VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/21/2025  20:40:59  PAGE 2
+
+
   ----------------------------------
 
-  -------         MODULE        ?C_STARTUP
-  C:0855H         SEGMENT       ?C_C51STARTUP
-  I:0008H         SEGMENT       ?STACK
-  C:0000H         PUBLIC        ?C_STARTUP
-  D:00E0H         SYMBOL        ACC
-  D:00F0H         SYMBOL        B
-  D:0083H         SYMBOL        DPH
-  D:0082H         SYMBOL        DPL
-  N:0000H         SYMBOL        IBPSTACK
-  N:0100H         SYMBOL        IBPSTACKTOP
-  N:0080H         SYMBOL        IDATALEN
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/03/2024  20:18:17  PAGE 2
-
-
-  C:0858H         SYMBOL        IDATALOOP
-  N:0000H         SYMBOL        PBPSTACK
-  N:0100H         SYMBOL        PBPSTACKTOP
-  N:0000H         SYMBOL        PDATALEN
-  N:0000H         SYMBOL        PDATASTART
-  N:0000H         SYMBOL        PPAGE
-  N:0000H         SYMBOL        PPAGEENABLE
-  D:00A0H         SYMBOL        PPAGE_SFR
-  D:0081H         SYMBOL        SP
-  C:0855H         SYMBOL        STARTUP1
-  N:0000H         SYMBOL        XBPSTACK
-  N:0000H         SYMBOL        XBPSTACKTOP
-  N:0000H         SYMBOL        XDATALEN
-  N:0000H         SYMBOL        XDATASTART
-  C:0000H         LINE#         126
-  C:0855H         LINE#         133
-  C:0857H         LINE#         134
-  C:0858H         LINE#         135
-  C:0859H         LINE#         136
-  C:085BH         LINE#         185
-  C:085EH         LINE#         196
-  -------         ENDMOD        ?C_STARTUP
-
-  -------         MODULE        MPMC_MINI_PROJECT
+  -------         MODULE        MPMC_MINI_PROJECT_NEWCODE
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:08ECH         PUBLIC        _delay
   B:0098H.0       PUBLIC        RI
   B:0098H.1       PUBLIC        TI
+  C:08B3H         PUBLIC        stepper_acw
   C:0800H         PUBLIC        main
   D:0099H         PUBLIC        SBUF
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
+  C:0881H         PUBLIC        stepper_cw
   D:008DH         PUBLIC        TH1
-  B:0090H.0       PUBLIC        load1
-  B:0090H.1       PUBLIC        load2
-  B:0090H.2       PUBLIC        load3
-  B:0090H.3       PUBLIC        load4
   B:0088H.6       PUBLIC        TR1
+  B:00A0H.1       PUBLIC        coil1
+  B:00A0H.2       PUBLIC        coil2
+  B:00A0H.3       PUBLIC        coil3
+  B:00A0H.4       PUBLIC        coil4
+  B:0090H.0       PUBLIC        lamp1
+  B:0090H.1       PUBLIC        lamp2
+  B:0090H.2       PUBLIC        lamp3
+  B:0090H.3       PUBLIC        lamp4
+  C:08E8H         SYMBOL        L?0040
+  -------         PROC          L?0039
+  -------         ENDPROC       L?0039
+  C:08E8H         SYMBOL        L?0040
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:08ECH         LINE#         15
+  C:08ECH         LINE#         17
+  C:08F6H         LINE#         18
+  C:090BH         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          STEPPER_CW
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:0881H         LINE#         21
+  C:0881H         LINE#         23
+  C:0884H         LINE#         24
+  C:0890H         LINE#         25
+  C:0893H         LINE#         26
+  C:089EH         LINE#         27
+  C:08A9H         LINE#         28
+  C:08B2H         LINE#         29
+  -------         ENDPROC       STEPPER_CW
+  -------         PROC          STEPPER_ACW
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/21/2025  20:40:59  PAGE 3
+
+
+  C:08B3H         LINE#         31
+  C:08B3H         LINE#         33
+  C:08B6H         LINE#         34
+  C:08C5H         LINE#         35
+  C:08CDH         LINE#         36
+  C:08D0H         LINE#         37
+  C:08D7H         LINE#         38
+  C:08E0H         LINE#         39
+  -------         ENDPROC       STEPPER_ACW
   -------         PROC          MAIN
   -------         DO            
-  D:0007H         SYMBOL        x
+  D:0001H         SYMBOL        x
   -------         ENDDO         
-  C:0800H         LINE#         7
-  C:0800H         LINE#         9
-  C:0803H         LINE#         10
-  C:0806H         LINE#         11
-  C:0809H         LINE#         12
-  C:080BH         LINE#         14
-  C:080BH         LINE#         15
-  C:080EH         LINE#         16
-  C:0810H         LINE#         17
-  C:0812H         LINE#         18
-  C:0815H         LINE#         21
-  C:0818H         LINE#         22
-  C:0818H         LINE#         23
-  C:081AH         LINE#         24
-  C:081AH         LINE#         25
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/03/2024  20:18:17  PAGE 3
-
-
-  C:081DH         LINE#         26
-  C:081DH         LINE#         27
-  C:081FH         LINE#         28
-  C:081FH         LINE#         29
-  C:0822H         LINE#         30
-  C:0822H         LINE#         31
-  C:0824H         LINE#         32
-  C:0824H         LINE#         33
-  C:0827H         LINE#         34
-  C:0827H         LINE#         35
-  C:0829H         LINE#         36
-  C:0829H         LINE#         37
-  C:082CH         LINE#         38
-  C:082CH         LINE#         39
-  C:082EH         LINE#         40
-  C:082EH         LINE#         41
-  C:0831H         LINE#         42
-  C:0831H         LINE#         43
-  C:0833H         LINE#         44
-  C:0833H         LINE#         45
-  C:0836H         LINE#         46
-  C:0836H         LINE#         47
-  C:0838H         LINE#         48
-  C:0838H         LINE#         49
-  C:083BH         LINE#         50
-  C:083DH         LINE#         51
-  C:083DH         LINE#         52
-  C:0840H         LINE#         53
-  C:0840H         LINE#         54
-  C:0848H         LINE#         55
-  C:0848H         LINE#         56
-  C:084BH         LINE#         57
-  C:084BH         LINE#         58
-  C:0853H         LINE#         59
-  C:0853H         LINE#         60
+  C:0800H         LINE#         41
+  C:0800H         LINE#         43
+  C:0803H         LINE#         44
+  C:0806H         LINE#         45
+  C:0809H         LINE#         46
+  C:080BH         LINE#         48
+  C:0813H         LINE#         49
+  C:081BH         LINE#         51
+  C:081BH         LINE#         52
+  C:081EH         LINE#         53
+  C:0820H         LINE#         54
+  C:0822H         LINE#         55
+  C:0824H         LINE#         56
+  C:0827H         LINE#         57
+  C:0829H         LINE#         60
+  C:082EH         LINE#         61
+  C:0833H         LINE#         62
+  C:0838H         LINE#         63
+  C:083DH         LINE#         64
+  C:0842H         LINE#         65
+  C:0847H         LINE#         66
+  C:084CH         LINE#         67
+  C:0851H         LINE#         68
+  C:085CH         LINE#         69
+  C:0867H         LINE#         72
+  C:0872H         LINE#         73
+  C:087FH         LINE#         74
   -------         ENDPROC       MAIN
-  -------         ENDMOD        MPMC_MINI_PROJECT
+  -------         ENDMOD        MPMC_MINI_PROJECT_NEWCODE
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0064H BYTE ( 4%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 010CH BYTE (13%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 code=100
+Program Size: data=9.0 xdata=0 code=283
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

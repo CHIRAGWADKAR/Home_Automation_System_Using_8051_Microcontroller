@@ -1,4 +1,3 @@
-".\Objects\STARTUP.obj",
-".\Objects\MPMC_Mini_Project.obj" 
+".\Objects\MPMC_Mini_Project_NewCode.obj" 
 TO ".\Objects\MPMC_Mini_Project" 
 PRINT(".\Listings\MPMC_Mini_Project.m51") CODE( 0X0000-0X0FFF )

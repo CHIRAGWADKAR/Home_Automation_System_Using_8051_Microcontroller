@@ -177,7 +177,7 @@
           </Flash1>
           <bUseTDR>0</bUseTDR>
           <Flash2></Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -356,7 +356,7 @@
             <UserClasses></UserClasses>
             <CSection></CSection>
             <UserSection></UserSection>
-            <CodeBaseAddress></CodeBaseAddress>
+            <CodeBaseAddress>0X0000-0X0FFF</CodeBaseAddress>
             <XDataBaseAddress></XDataBaseAddress>
             <PDataBaseAddress></PDataBaseAddress>
             <BitBaseAddress></BitBaseAddress>
@@ -377,14 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>STARTUP.A51</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\STARTUP.A51</FilePath>
-            </File>
-            <File>
-              <FileName>MPMC_Mini_Project.C</FileName>
+              <FileName>MPMC_Mini_Project_NewCode.C</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MPMC_Mini_Project.C</FilePath>
+              <FilePath>.\MPMC_Mini_Project_NewCode.C</FilePath>
             </File>
           </Files>
         </Group>
